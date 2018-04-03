@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoSim_01", "EcoSim_01\EcoSim_01.csproj", "{141B0342-E7DC-46EB-9930-A4A34E02842C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{141B0342-E7DC-46EB-9930-A4A34E02842C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{141B0342-E7DC-46EB-9930-A4A34E02842C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{141B0342-E7DC-46EB-9930-A4A34E02842C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{141B0342-E7DC-46EB-9930-A4A34E02842C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02F1F7F3-79B2-4B9B-BB2F-21AA82BFF4D0}
+	EndGlobalSection
+EndGlobal

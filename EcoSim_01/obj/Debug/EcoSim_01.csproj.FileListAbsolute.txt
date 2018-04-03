@@ -1,0 +1,11 @@
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\obj\Debug\EcoSim_01.csprojResolveAssemblyReference.cache
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\obj\Debug\EcoSim_01.MapBuildingScreen.resources
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\obj\Debug\EcoSim_01.Properties.Resources.resources
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\obj\Debug\EcoSim_01.csproj.GenerateResource.Cache
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\obj\Debug\EcoSim_01.csproj.CoreCompileInputs.cache
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\bin\Debug\EcoSim_01.exe.config
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\bin\Debug\EcoSim_01.exe
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\bin\Debug\EcoSim_01.pdb
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\obj\Debug\EcoSim_01.exe
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\obj\Debug\EcoSim_01.pdb
+C:\Users\Will\Source\Repos\EcoSim_01\EcoSim_01\obj\Debug\EcoSim_01.Form1.resources
