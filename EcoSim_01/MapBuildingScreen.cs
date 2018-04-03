@@ -186,6 +186,31 @@ namespace EcoSim_01
                 case "goldHills":
                     buildingMap.tileSet[(e.X - 1) / (GlobalClass1.graphicTileSize + 1)][(e.Y - 1) / (GlobalClass1.graphicTileSize + 1)] = new LandTile(i, j, "hillsGold");
                     break;
+                case "shallowBeach":
+                    //
+                    break;
+                case "harbor":
+                    buildingMap.tileSet[(e.X - 1) / (GlobalClass1.graphicTileSize + 1)][(e.Y - 1) / (GlobalClass1.graphicTileSize + 1)] = new HarborTile(i,j);
+                    break;
+                case "impassableOcean":
+                    buildingMap.tileSet[(e.X - 1) / (GlobalClass1.graphicTileSize + 1)][(e.Y - 1) / (GlobalClass1.graphicTileSize + 1)] = new SeaTile(i, j, 10);
+                    break;
+                case "wetField":
+                    buildingMap.tileSet[(e.X - 1) / (GlobalClass1.graphicTileSize + 1)][(e.Y - 1) / (GlobalClass1.graphicTileSize + 1)] = new LandTile(i, j, "wetField");
+                    break;
+                case "ironHills":
+                    buildingMap.tileSet[(e.X - 1) / (GlobalClass1.graphicTileSize + 1)][(e.Y - 1) / (GlobalClass1.graphicTileSize + 1)] = new LandTile(i, j, "hillsIron");
+                    break;
+                case "barren":
+                    buildingMap.tileSet[(e.X - 1) / (GlobalClass1.graphicTileSize + 1)][(e.Y - 1) 
+                        / (GlobalClass1.graphicTileSize + 1)] = new LandTile(i, j, "barren");
+                    break;
+                case "deepBeach":
+                    //
+                    break;
+                case "mountain":
+                    //
+                    break;
             }
 
             buildingMap.RefreshMapImage();
