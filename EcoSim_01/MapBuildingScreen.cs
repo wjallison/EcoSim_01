@@ -29,10 +29,10 @@ namespace EcoSim_01
 
             buildingMap = new Map();
             //Set all tiles to SeaTile 
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; i < mapBox.Size.Width/(GlobalClass1.graphicTileSize+1); i++)
             {
                 buildingMap.tileSet.Add(new List<Tile>());
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < mapBox.Size.Width / (GlobalClass1.graphicTileSize + 1); j++)
                 {
                     buildingMap.tileSet[i].Add(new SeaTile(i, j, 1));
                 }

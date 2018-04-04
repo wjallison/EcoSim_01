@@ -8,7 +8,7 @@ namespace EcoSim_01
 {
     public static class GlobalClass1
     {
-        public static int graphicTileSize = 50;
+        public static int graphicTileSize = 25;
         //public static int graphicTileSizePlus = 51;
     }
 }
