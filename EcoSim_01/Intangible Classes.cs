@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EcoSim_01
 {
-    class Coordinates
+    public class Coordinates
     {
         public int x, y;
         public int[] c = new int[2];
@@ -41,7 +41,7 @@ namespace EcoSim_01
         }
     }
 
-    class PathfindingTile
+    public class PathfindingTile
     {
         public Tile t;
         //vect is to record direction from which the tile was accessed
@@ -89,7 +89,7 @@ namespace EcoSim_01
         }
     }
 
-    class Ship
+    public class Ship
     {
         string name;
         int id;
@@ -142,7 +142,7 @@ namespace EcoSim_01
         }
     }
 
-    class Commodity
+    public class Commodity
     {
         string name;
         int sizePUnit;
@@ -151,7 +151,7 @@ namespace EcoSim_01
 
     }
 
-    class Building
+    public class Building
     {
         string name;
         int ticsToProduce;

@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Xml.Serialization;
 
 namespace EcoSim_01
 {
-    class Map
+    public class Map
     {
         public List<List<Tile>> tileSet = new List<List<Tile>>();
-        public List<Island> islandList = new List<Island>();
+        List<Island> islandList = new List<Island>();
 
         public string baseMapLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/MapBackground.jpg";
         public System.Drawing.Image fullMapImage;// = Image.FromFile(baseMapLocation);
@@ -19,7 +20,7 @@ namespace EcoSim_01
         public string debugging;
 
 
-        public bool Includes(Coordinates c)
+        bool Includes(Coordinates c)
         {
             if(c.x < tileSet.Count() && c.y < tileSet[0].Count())
             {
@@ -30,7 +31,7 @@ namespace EcoSim_01
 
         public void InitializeMapImage()
         {
-            fullMapImage = Bitmap.FromFile(baseMapLocation);
+            fullMapImage = Image.FromFile(baseMapLocation);
             gra = Graphics.FromImage(fullMapImage);
 
             for (int i = 0; i < tileSet.Count(); i++)
@@ -58,10 +59,15 @@ namespace EcoSim_01
 
         public void DrawTile(Tile t)
         {
-            Bitmap bit = new Bitmap(t.localCanvas);
-            gra.DrawImage(bit, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY),new Size(GlobalClass1.graphicTileSize,GlobalClass1.graphicTileSize)));
+            //Bitmap bit = new Bitmap(t.localCanvas);
+            //gra.DrawImage(bit, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY),new Size(GlobalClass1.graphicTileSize,GlobalClass1.graphicTileSize)));
+
+            gra.DrawImage(t.localCanvas, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY), new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
+
         }
     }
+
+
 
     class Island
     {
@@ -80,7 +86,11 @@ namespace EcoSim_01
 
     }
 
-    class Tile
+
+    [XmlInclude(typeof(LandTile))]
+    [XmlInclude(typeof(SeaTile))]
+    [XmlInclude(typeof(HarborTile))]
+    public class Tile
     {
         public int x, y;
         public Coordinates coord;
@@ -89,17 +99,12 @@ namespace EcoSim_01
 
         //Art Asset
         protected string imgLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/Tiles/";
-        public Image localCanvas;
+        public Bitmap localCanvas;
         Graphics gra;
-
-
-
-        
-
 
     }
 
-    class SeaTile : Tile
+    public class SeaTile : Tile
     {
         public string type;
         //public bool passable;
@@ -116,21 +121,23 @@ namespace EcoSim_01
 
             imgLocation += "Ocean 0 2.jpg";
             //imgLocation = "Ocean.jpg";
-            localCanvas = Image.FromFile(imgLocation);
+            localCanvas = (Bitmap)Image.FromFile(imgLocation);
 
             //Console.Write(localCanvas.Height);
 
         }
+
+        public SeaTile() { }
     }
 
-    class LandTile : Tile
+    public class LandTile : Tile
     {
         string type;
         //building art asset
         string buildingType;
 
-        
 
+        public LandTile() { }
         public LandTile(int i,int j, string t)
         {
             type = t;
@@ -170,14 +177,15 @@ namespace EcoSim_01
 
             }
 
-            localCanvas = Image.FromFile(imgLocation);
+            localCanvas = (Bitmap)Image.FromFile(imgLocation);
         }
     }
 
-    class HarborTile : Tile
+    public class HarborTile : Tile
     {
         List<Ship> occupants;
 
+        public HarborTile() { }
         public HarborTile(int i, int j)
         {
             x = i;
@@ -188,7 +196,7 @@ namespace EcoSim_01
 
             imgLocation += "Harbor.jpg";
 
-            localCanvas = Image.FromFile(imgLocation);
+            localCanvas = (Bitmap)Image.FromFile(imgLocation);
         }
 
 

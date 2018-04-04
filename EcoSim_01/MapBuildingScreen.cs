@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Xml.Serialization;
 
 namespace EcoSim_01
 {
@@ -16,10 +17,13 @@ namespace EcoSim_01
         Map buildingMap;
 
         string brush;
-
+        
         //palatte image
         Image pal;
 
+        XmlSerializer xs;// = new XmlSerializer(typeof(Map));
+        //[XmlInclude(typeof(LandTile))]
+        //public class Tile { }
 
         public MapBuildingScreen()
         {
@@ -47,9 +51,10 @@ namespace EcoSim_01
 
             //Build palatte box
             BuildPalatteBox();
-            
 
 
+            //xs = new XmlSerializer(typeof(Map));
+            xs = new XmlSerializer(typeof(List<List<Tile>>));
 
 
         }
@@ -216,6 +221,36 @@ namespace EcoSim_01
             buildingMap.RefreshMapImage();
             mapBox.Image = buildingMap.fullMapImage;
             //mapchange
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            if (saveFileDialog1.FileName != "")
+            {
+                System.IO.TextWriter tw = new System.IO.StreamWriter(saveFileDialog1.FileName);
+                //xs.Serialize(tw, buildingMap);
+
+                xs.Serialize(tw, buildingMap.tileSet);
+            }
+        }
+
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            if(openFileDialog1.FileName != "")
+            {
+                using (var sr = new System.IO.StreamReader(openFileDialog1.FileName))
+                {
+                    //buildingMap = (Map)xs.Deserialize(sr);
+                    buildingMap.tileSet = (List<List<Tile>>)xs.Deserialize(sr);
+
+                    buildingMap.RefreshMapImage();
+
+                    mapBox.Image = buildingMap.fullMapImage;
+                }
+
+            }
         }
     }
 }
