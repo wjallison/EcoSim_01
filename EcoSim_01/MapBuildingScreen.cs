@@ -22,8 +22,6 @@ namespace EcoSim_01
         Image pal;
 
         XmlSerializer xs;// = new XmlSerializer(typeof(Map));
-        //[XmlInclude(typeof(LandTile))]
-        //public class Tile { }
 
         public MapBuildingScreen()
         {
@@ -36,7 +34,6 @@ namespace EcoSim_01
                 buildingMap.tileSet.Add(new List<Tile>());
                 for (int j = 0; j < 10; j++)
                 {
-                    //buildingMap.tileSet[i][j] = new SeaTile(i, j, 1);
                     buildingMap.tileSet[i].Add(new SeaTile(i, j, 1));
                 }
             }
@@ -251,6 +248,24 @@ namespace EcoSim_01
                 }
 
             }
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            buildingMap = new Map();
+            //Set all tiles to SeaTile 
+            for (int i = 0; i < 10; i++)
+            {
+                buildingMap.tileSet.Add(new List<Tile>());
+                for (int j = 0; j < 10; j++)
+                {
+                    buildingMap.tileSet[i].Add(new SeaTile(i, j, 1));
+                }
+            }
+
+            buildingMap.InitializeMapImage();
+
+            mapBox.Image = buildingMap.fullMapImage;
         }
     }
 }

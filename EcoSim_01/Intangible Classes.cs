@@ -104,6 +104,7 @@ namespace EcoSim_01
         float firepower;
         float manpower;
         //art asset
+        string graphicsFileLocation;
 
         public void PathFind(List<Tile> destList, Map map)
         {
