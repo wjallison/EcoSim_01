@@ -62,7 +62,12 @@ namespace EcoSim_01
             //Bitmap bit = new Bitmap(t.localCanvas);
             //gra.DrawImage(bit, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY),new Size(GlobalClass1.graphicTileSize,GlobalClass1.graphicTileSize)));
 
-            gra.DrawImage(t.localCanvas, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY), new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
+
+            Image bit = Image.FromFile(t.imgLocation);
+
+            //gra.DrawImage(t.localCanvas, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY), new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
+
+            gra.DrawImage(bit, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY), new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
 
         }
     }
@@ -99,7 +104,7 @@ namespace EcoSim_01
 
         //Art Asset
         public string imgLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/Tiles/";
-        public Bitmap localCanvas;
+        //public Bitmap localCanvas;
         //Graphics gra;
 
     }
@@ -121,7 +126,7 @@ namespace EcoSim_01
 
             imgLocation += "Ocean 0 2.jpg";
             //imgLocation = "Ocean.jpg";
-            localCanvas = (Bitmap)Image.FromFile(imgLocation);
+            //localCanvas = (Bitmap)Image.FromFile(imgLocation);
 
             //Console.Write(localCanvas.Height);
 
@@ -177,7 +182,7 @@ namespace EcoSim_01
 
             }
 
-            localCanvas = (Bitmap)Image.FromFile(imgLocation);
+            //localCanvas = (Bitmap)Image.FromFile(imgLocation);
         }
     }
 
@@ -196,7 +201,7 @@ namespace EcoSim_01
 
             imgLocation += "Harbor.jpg";
 
-            localCanvas = (Bitmap)Image.FromFile(imgLocation);
+            //localCanvas = (Bitmap)Image.FromFile(imgLocation);
         }
 
 
