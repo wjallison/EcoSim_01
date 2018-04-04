@@ -98,9 +98,9 @@ namespace EcoSim_01
         public int passable;
 
         //Art Asset
-        protected string imgLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/Tiles/";
+        public string imgLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/Tiles/";
         public Bitmap localCanvas;
-        Graphics gra;
+        //Graphics gra;
 
     }
 
