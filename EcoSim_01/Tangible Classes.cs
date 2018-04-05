@@ -83,6 +83,7 @@ namespace EcoSim_01
                 new Rectangle(
                     new Point(s.coord.graphicsX + GlobalClass1.graphicTileSize/3, s.coord.graphicsY+GlobalClass1.graphicTileSize/4),
                     new Size(GlobalClass1.graphicTileSize / 3, GlobalClass1.graphicTileSize / 2)));
+            //gra.DrawString()
         }
 
         public bool IsHarbor(int i, int j)

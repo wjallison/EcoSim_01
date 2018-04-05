@@ -217,26 +217,11 @@ namespace EcoSim_01
                         }
                         
                     }
-
                     activeList[activeIndex].counter--;
                 }
                 counter++;
             }
-
-
-            ////Assign counter values to the dictionary
-
-            //ports = new Dictionary<Tile, int>();
-            //foreach (Tile d in destList)
-            //{
-
-            //}
         }
-
-        //public bool test(List<PathfindingTile> active, PathfindingTile current)
-        //{
-            
-        //}
     }
 
     public class Commodity
