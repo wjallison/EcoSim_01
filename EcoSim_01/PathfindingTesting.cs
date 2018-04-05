@@ -20,6 +20,8 @@ namespace EcoSim_01
 
         bool shipPlaced = false;
 
+        List<Tile> destinations = new List<Tile>();
+
         public PathfindingTesting()
         {
             InitializeComponent();
@@ -38,6 +40,19 @@ namespace EcoSim_01
                     testingMap.RefreshMapImage();
 
                     mapBox.Image = testingMap.fullMapImage;
+
+
+                    //Assemble destinations
+                    for(int i = 0; i < testingMap.tileSet.Count(); i++)
+                    {
+                        for(int j = 0; j < testingMap.tileSet[0].Count(); j++)
+                        {
+                            if (testingMap.tileSet[i][j].isHarbor)
+                            {
+                                destinations.Add(testingMap.tileSet[i][j]);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -77,6 +92,11 @@ namespace EcoSim_01
                 //Draw the ship
                 testingMap.DrawPathTestShip(testingMap.tileSet[i][j].occupants.Last());
                 mapBox.Image = testingMap.fullMapImage;
+
+                //Run the pathfinder
+                testingMap.tileSet[i][j].occupants.Last().PathFind(destinations, testingMap);
+                //string s;
+                reportBox.Text = testingMap.tileSet[i][j].occupants.Last().PrintPorts();
 
                 shipPlaced = true;
             }

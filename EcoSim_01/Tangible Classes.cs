@@ -215,7 +215,7 @@ namespace EcoSim_01
 
     public class HarborTile : Tile
     {
-        List<Ship> occupants;
+        //List<Ship> occupants;
 
         public HarborTile() { }
         public HarborTile(int i, int j)

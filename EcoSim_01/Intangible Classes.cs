@@ -41,10 +41,10 @@ namespace EcoSim_01
         }
         public Coordinates iterVect(int i)
         {
-            if (i == 0) { return new Coordinates(x + 1, y); }
-            else if (i == 1) { return new Coordinates(x, y + 1); }
-            else if (i == 2) { return new Coordinates(x - 1, y); }
-            else if (i == 3) { return new Coordinates(x, y - 1); }
+            if (i == 0 && x < GlobalClass1.mapDim-1) { return new Coordinates(x + 1, y); }
+            else if (i == 1 && y < GlobalClass1.mapDim-1) { return new Coordinates(x, y + 1); }
+            else if (i == 2 && x > 0) { return new Coordinates(x - 1, y); }
+            else if (i == 3 && y > 0) { return new Coordinates(x, y - 1); }
             else { return new Coordinates(x, y); }
         }
 
@@ -59,11 +59,12 @@ namespace EcoSim_01
     {
         public Tile t;
         //vect is to record direction from which the tile was accessed
-        public Coordinates vect;
+        public Coordinates vect = new Coordinates(0,0);
         //vect may be replaced by the following:
         public int dir;
-        public Coordinates coord;
+        public Coordinates coord = new Coordinates(0,0);
         public int counter;
+        public int finalCount;
         public bool touched = false;
         public bool destination;
 
@@ -71,10 +72,13 @@ namespace EcoSim_01
         {
 
         }
+        
 
-        public PathfindingTile(Tile tIn, int dir, bool touching = false)
+        public PathfindingTile(Tile tIn, int dir = -1, bool touching = false)
         {
             t = tIn;
+
+            coord.set(t.coord.x, t.coord.y);
 
 
             if(t.passable != 10)
@@ -116,17 +120,31 @@ namespace EcoSim_01
         public int progress;
         public int holdSize;
         public int holdingSize;
-        IDictionary<Commodity, int> cargo;
+        IDictionary<Commodity, int> cargo = new Dictionary<Commodity, int>();
         public int health;
         public float firepower;
         public float manpower;
+
         //art asset
         public string graphicsFileLocation;
+
+        //Decision making assets
+        IDictionary<PathfindingTile, int> ports = new Dictionary<PathfindingTile, int>();
+
+        public string PrintPorts()
+        {
+            string s = "";
+            foreach (PathfindingTile p in ports.Keys)
+            {
+                s = s + "Harbor at: " + p.coord.x + ", " + p.coord.y + ": " + ports[p].ToString()+"/n";
+            }
+            return s;
+        }
 
         public void PathFind(List<Tile> destList, Map map)
         {
             //List<List<PathfindingTile>> activeList = new List<List<PathfindingTile>>();
-            PathfindingTile startTile = new PathfindingTile();
+            PathfindingTile startTile = new PathfindingTile(map.tileSet[coord.x][coord.y]);
             List<PathfindingTile> activeList = new List<PathfindingTile>();
             List<List<PathfindingTile>> fullList = new List<List<PathfindingTile>>();
             //List<Tile> destinations = destList;
@@ -149,6 +167,7 @@ namespace EcoSim_01
             activeList.Add(fullList[coord.x][coord.y]);
 
 
+            int counter = 0;
             while(destCoords.Count() > 0)
             {
                 for (int activeIndex = 0; activeIndex < activeList.Count(); activeIndex++)
@@ -182,29 +201,36 @@ namespace EcoSim_01
                                 activeList.Add(fullList[xP][yP]);
                                 //assign direction from which it was accessed
                                 activeList.Last().dir = i;
+                                activeList.Last().finalCount = counter;
                                 
                                 //Check if it's a destination
                                 for(int destInd = 0; destInd < destCoords.Count(); destInd++)
                                 {
                                     if (destCoords[destInd].Equals(activeList.Last().coord))
                                     {
+                                        ports.Add(activeList.Last(), activeList.Last().finalCount);
                                         destCoords.RemoveAt(destInd);
                                         break;
                                     }
                                 }
                             }
-                            //if (t.coord.Equals(fullList[xP][yP]))
-                            //{
-
-                            //}
                         }
                         
                     }
 
                     activeList[activeIndex].counter--;
                 }
+                counter++;
             }
-            
+
+
+            ////Assign counter values to the dictionary
+
+            //ports = new Dictionary<Tile, int>();
+            //foreach (Tile d in destList)
+            //{
+
+            //}
         }
 
         //public bool test(List<PathfindingTile> active, PathfindingTile current)
