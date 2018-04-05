@@ -48,6 +48,8 @@ namespace EcoSim_01
 
         public void RefreshMapImage()
         {
+            fullMapImage = Image.FromFile(baseMapLocation);
+            gra = Graphics.FromImage(fullMapImage);
             for (int i = 0; i < tileSet.Count(); i++)
             {
                 for (int j = 0; j < tileSet[0].Count(); j++)
@@ -67,8 +69,21 @@ namespace EcoSim_01
 
             //gra.DrawImage(t.localCanvas, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY), new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
 
-            gra.DrawImage(bit, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY), new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
+            gra.DrawImage(bit, 
+                new Rectangle(
+                    new Point(t.coord.graphicsX, t.coord.graphicsY), 
+                    new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
 
+        }
+
+        public bool IsHarbor(int i, int j)
+        {
+            
+            if (tileSet[i][j].isHarbor)
+            {
+                return true;
+            }
+            else { return false; }
         }
     }
 
@@ -101,6 +116,7 @@ namespace EcoSim_01
         public Coordinates coord;
         //passable: pathfinding cost for passing through tile.  1 minimum, 9 maximum, 10 impassable
         public int passable;
+        public bool isHarbor = false;
 
         //Art Asset
         public string imgLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/Tiles/";
@@ -195,6 +211,7 @@ namespace EcoSim_01
         {
             x = i;
             y = j;
+            isHarbor = true;
             //coord.set(i, j);
             coord = new Coordinates(i, j);
 

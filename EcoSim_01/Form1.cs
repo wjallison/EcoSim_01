@@ -12,6 +12,7 @@ namespace EcoSim_01
 {
     public partial class Form1 : Form
     {
+        private Button pathfindingTestingButton;
         private Button mapBuilderButton;
 
         public Form1()
@@ -22,6 +23,7 @@ namespace EcoSim_01
         private void InitializeComponent()
         {
             this.mapBuilderButton = new System.Windows.Forms.Button();
+            this.pathfindingTestingButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mapBuilderButton
@@ -34,9 +36,20 @@ namespace EcoSim_01
             this.mapBuilderButton.UseVisualStyleBackColor = true;
             this.mapBuilderButton.Click += new System.EventHandler(this.mapBuilderButton_Click);
             // 
+            // pathfindingTestingButton
+            // 
+            this.pathfindingTestingButton.Location = new System.Drawing.Point(70, 92);
+            this.pathfindingTestingButton.Name = "pathfindingTestingButton";
+            this.pathfindingTestingButton.Size = new System.Drawing.Size(140, 23);
+            this.pathfindingTestingButton.TabIndex = 1;
+            this.pathfindingTestingButton.Text = "Pathfinding Testing";
+            this.pathfindingTestingButton.UseVisualStyleBackColor = true;
+            this.pathfindingTestingButton.Click += new System.EventHandler(this.pathfindingTestingButton_Click);
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.pathfindingTestingButton);
             this.Controls.Add(this.mapBuilderButton);
             this.Name = "Form1";
             this.ResumeLayout(false);
@@ -52,6 +65,12 @@ namespace EcoSim_01
         {
             MapBuildingScreen mapScreen = new MapBuildingScreen();
             mapScreen.ShowDialog();
+        }
+
+        private void pathfindingTestingButton_Click(object sender, EventArgs e)
+        {
+            PathfindingTesting pathTest = new PathfindingTesting();
+            pathTest.ShowDialog();
         }
     }
 }
