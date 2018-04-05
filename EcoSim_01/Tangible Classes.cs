@@ -195,7 +195,8 @@ namespace EcoSim_01
         {
             x = i;
             y = j;
-            coord.set(i, j);
+            //coord.set(i, j);
+            coord = new Coordinates(i, j);
 
             passable = 5;
 
