@@ -108,20 +108,20 @@ namespace EcoSim_01
 
     public class Ship
     {
-        string name;
-        int id;
+        public string name;
+        public string id;
 
         public Coordinates coord;
-        int ticsToTravel;
-        int progress;
-        int holdSize;
-        int holdingSize;
+        public int ticsToTravel;
+        public int progress;
+        public int holdSize;
+        public int holdingSize;
         IDictionary<Commodity, int> cargo;
-        int health;
-        float firepower;
-        float manpower;
+        public int health;
+        public float firepower;
+        public float manpower;
         //art asset
-        string graphicsFileLocation;
+        public string graphicsFileLocation;
 
         public void PathFind(List<Tile> destList, Map map)
         {
@@ -129,13 +129,13 @@ namespace EcoSim_01
             PathfindingTile startTile = new PathfindingTile();
             List<PathfindingTile> activeList = new List<PathfindingTile>();
             List<List<PathfindingTile>> fullList = new List<List<PathfindingTile>>();
-            List<Tile> destinations = destList;
+            //List<Tile> destinations = destList;
 
             List<Coordinates> destCoords = new List<Coordinates>();
 
             foreach(Tile d in destList) { destCoords.Add(d.coord); }
 
-            //Build list<list> of entire map
+            //Build list<list<PathfindingTile>> of entire map
             for (int i = 0; i < map.tileSet.Count(); i++)
             {
                 fullList.Add(new List<PathfindingTile>());
@@ -145,14 +145,14 @@ namespace EcoSim_01
                 }
             }
 
+            //Add starting position to active list
             activeList.Add(fullList[coord.x][coord.y]);
 
-            while(destinations.Count() > 0)
+
+            while(destCoords.Count() > 0)
             {
-                //foreach (PathfindingTile p in activeList)
                 for (int activeIndex = 0; activeIndex < activeList.Count(); activeIndex++)
                 {
-                    //PathfindingTile p = activeList[activeIndex];
                     if (activeList[activeIndex].counter == 0)
                     {
                         //check if neighbor is in activelist.
@@ -160,12 +160,12 @@ namespace EcoSim_01
                         //check if neighbor is a destination.  If so, remove from destination list
 
 
-                        //Check if neighbor is in activelist
-                        
+                        //Check if neighbor is in activelist                        
                         for (int i = 0; i<4; i++)
                         {
                             int xP = activeList[activeIndex].coord.iterVect(i).x;
                             int yP = activeList[activeIndex].coord.iterVect(i).y;
+
                             bool inListAlready = false;
 
                             for(int checkIndex = 0; checkIndex < activeList.Count(); checkIndex++)
@@ -200,8 +200,6 @@ namespace EcoSim_01
                         }
                         
                     }
-
-
 
                     activeList[activeIndex].counter--;
                 }

@@ -55,9 +55,9 @@ namespace EcoSim_01
              * Report:
              * distance to each
              * path to each
-             *      highlight tiles?  
-             *      different colors for different harbors?  
-             *      Click on harbor to highlight path?
+             *          highlight tiles?  
+             *          different colors for different harbors?  
+             *      ->  Click on harbor to highlight path?
              * Time for algorithm to run
              * 
              */
@@ -66,7 +66,19 @@ namespace EcoSim_01
 
             if (!shipPlaced) //Default, creates ship and runs above steps
             {
+                //Create ship
+                testingMap.tileSet[i][j].occupants.Add(new Ship());
 
+                //Assign basic properties to the ship
+                testingMap.tileSet[i][j].occupants.Last().coord = new Coordinates(i, j);
+                testingMap.tileSet[i][j].occupants.Last().graphicsFileLocation =
+                    System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/testingBoat.jpg";
+
+                //Draw the ship
+                testingMap.DrawPathTestShip(testingMap.tileSet[i][j].occupants.Last());
+                mapBox.Image = testingMap.fullMapImage;
+
+                shipPlaced = true;
             }
             else
             {

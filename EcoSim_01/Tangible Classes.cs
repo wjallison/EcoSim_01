@@ -73,7 +73,16 @@ namespace EcoSim_01
                 new Rectangle(
                     new Point(t.coord.graphicsX, t.coord.graphicsY), 
                     new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
+        }
 
+        public void DrawPathTestShip(Ship s)
+        {
+            Image bit = Image.FromFile(s.graphicsFileLocation);
+
+            gra.DrawImage(bit,
+                new Rectangle(
+                    new Point(s.coord.graphicsX + GlobalClass1.graphicTileSize/3, s.coord.graphicsY+GlobalClass1.graphicTileSize/4),
+                    new Size(GlobalClass1.graphicTileSize / 3, GlobalClass1.graphicTileSize / 2)));
         }
 
         public bool IsHarbor(int i, int j)
@@ -117,6 +126,7 @@ namespace EcoSim_01
         //passable: pathfinding cost for passing through tile.  1 minimum, 9 maximum, 10 impassable
         public int passable;
         public bool isHarbor = false;
+        public List<Ship> occupants;
 
         //Art Asset
         public string imgLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/Tiles/";
@@ -125,11 +135,12 @@ namespace EcoSim_01
 
     }
 
+
+
     public class SeaTile : Tile
     {
         public string type;
         //public bool passable;
-        public List<Ship> occupants;
 
         public SeaTile(int i,int j,int pass)
         {

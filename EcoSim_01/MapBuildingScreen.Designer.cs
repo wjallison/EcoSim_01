@@ -126,6 +126,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "XML files (*.xml)|*xml|All files(*.*)|*.*";
             // 
             // MapBuildingScreen
             // 
