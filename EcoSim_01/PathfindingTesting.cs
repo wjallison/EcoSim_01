@@ -22,6 +22,8 @@ namespace EcoSim_01
 
         List<Tile> destinations = new List<Tile>();
 
+        int shipX, shipY;
+
         public PathfindingTesting()
         {
             InitializeComponent();
@@ -83,6 +85,7 @@ namespace EcoSim_01
             {
                 //Create ship
                 testingMap.tileSet[i][j].occupants.Add(new Ship());
+                shipX = i; shipY = j;
 
                 //Assign basic properties to the ship
                 testingMap.tileSet[i][j].occupants.Last().coord = new Coordinates(i, j);
@@ -105,6 +108,22 @@ namespace EcoSim_01
                 if (testingMap.IsHarbor(i,j)) //clicked on harbor tile, highlights path to harbor
                 {
 
+                    for (int harborIndex = 0; harborIndex < testingMap.tileSet[shipX][shipY].occupants.Last().courses.Count(); harborIndex++)
+                    {
+                        if(
+                            testingMap.tileSet[shipX][shipY].occupants.Last().courses[harborIndex].Last().coord.BoolEqualCheck(new Coordinates(i,j))
+                            )
+                        {
+                            //highlight all tiles in courses[harborIndex]
+                            foreach (PathfindingTile t in testingMap.tileSet[shipX][shipY].occupants.Last().courses[harborIndex])
+                            {
+                                testingMap.Highlight(t, "Green");
+                            }
+
+                            mapBox.Image = testingMap.fullMapImage;
+                            break;
+                        }
+                    }
                 }
             }
         }

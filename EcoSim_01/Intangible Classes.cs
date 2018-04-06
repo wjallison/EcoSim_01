@@ -48,7 +48,16 @@ namespace EcoSim_01
             else { return new Coordinates(x, y); }
         }
 
-        public bool Equals(Coordinates c)
+        public Coordinates InverseIterVect(int i)
+        {
+            if (i == 2) { return new Coordinates(x + 1, y); }
+            else if (i == 3) { return new Coordinates(x, y + 1); }
+            else if (i == 0) { return new Coordinates(x - 1, y); }
+            else if (i == 1) { return new Coordinates(x, y - 1); }
+            else { return new Coordinates(x, y); }
+        }
+
+        public bool BoolEqualCheck(Coordinates c)
         {
             if (x == c.x && y == c.y) { return true; }
             else { return false; }
@@ -131,6 +140,8 @@ namespace EcoSim_01
         //Decision making assets
         IDictionary<PathfindingTile, int> ports = new Dictionary<PathfindingTile, int>();
 
+        public List<List<PathfindingTile>> courses = new List<List<PathfindingTile>>();
+
         public string PrintPorts()
         {
             string s = "";
@@ -139,6 +150,18 @@ namespace EcoSim_01
                 s = s + "Harbor at: " + p.coord.x + ", " + p.coord.y + ": " + ports[p].ToString()+"/n";
             }
             return s;
+        }
+
+        public PathfindingTile ActiveSearch(List<PathfindingTile> active, Coordinates c)
+        {
+            foreach(PathfindingTile t in active)
+            {
+                if(t.coord.BoolEqualCheck(c))
+                {
+                    return t;
+                }
+            }
+            return new PathfindingTile();
         }
 
         public void PathFind(List<Tile> destList, Map map)
@@ -189,7 +212,7 @@ namespace EcoSim_01
 
                             for(int checkIndex = 0; checkIndex < activeList.Count(); checkIndex++)
                             {
-                                if (activeList[checkIndex].coord.Equals(activeList[activeIndex].coord.iterVect(i)))
+                                if (activeList[checkIndex].coord.BoolEqualCheck(activeList[activeIndex].coord.iterVect(i)))
                                 {
                                     inListAlready = true;
                                 }
@@ -206,9 +229,11 @@ namespace EcoSim_01
                                 //Check if it's a destination
                                 for(int destInd = 0; destInd < destCoords.Count(); destInd++)
                                 {
-                                    if (destCoords[destInd].Equals(activeList.Last().coord))
+                                    if (destCoords[destInd].BoolEqualCheck(activeList.Last().coord))
                                     {
                                         ports.Add(activeList.Last(), activeList.Last().finalCount);
+                                        courses.Add(new List<PathfindingTile>());
+                                        courses.Last().Add(activeList.Last());
                                         destCoords.RemoveAt(destInd);
                                         break;
                                     }
@@ -221,6 +246,30 @@ namespace EcoSim_01
                 }
                 counter++;
             }
+
+            //Add paths to courses
+
+            //foreach (Tile t in destList)
+            for(int destInd = 0; destInd < courses.Count(); destInd++)
+            {
+                //courses.Add(new List<PathfindingTile>());
+                //courses.Last().Add();
+                Coordinates current = courses[destInd][0].coord;
+                while (!current.BoolEqualCheck(coord))
+                {
+
+                    courses[destInd].Add(
+                        ActiveSearch(
+                            activeList,
+                            courses[destInd].Last().coord.InverseIterVect(courses[destInd].Last().dir)
+                            )
+                            );
+                    current = courses[destInd].Last().coord;
+                }
+                courses[destInd].Reverse();
+            }
+
+
         }
     }
 

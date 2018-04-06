@@ -75,6 +75,16 @@ namespace EcoSim_01
                     new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
         }
 
+        public void Highlight(PathfindingTile p, string color)
+        {
+            Image bit = Image.FromFile(System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/Highlight" + color + ".png");
+
+            gra.DrawImage(bit,
+                new Rectangle(
+                    new Point(p.coord.graphicsX, p.coord.graphicsY),
+                    new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
+        }
+
         public void DrawPathTestShip(Ship s)
         {
             Image bit = Image.FromFile(s.graphicsFileLocation);
