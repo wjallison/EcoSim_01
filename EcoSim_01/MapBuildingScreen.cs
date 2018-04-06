@@ -111,6 +111,8 @@ namespace EcoSim_01
 
         private void palatteBox_MouseClick(object sender, MouseEventArgs e)
         {
+            clearBrushButton.Visible = true;
+            
             //Left Side
             if (e.X < 51)
             {
@@ -266,6 +268,45 @@ namespace EcoSim_01
             buildingMap.InitializeMapImage();
 
             mapBox.Image = buildingMap.fullMapImage;
+        }
+
+        private void checkButton_Click(object sender, EventArgs e)
+        {
+            //Check button creates islands (!!!)
+
+            /* Steps:
+             * 
+             * Find harbors.  Add each to a new item in islandlists.
+             * 
+             * Initiate Island.IslandBuilder
+             */
+
+
+            //Find harbors and add to islandlists
+            int islandCounter = 0;
+            foreach (List<Tile> l in buildingMap.tileSet)
+            {
+                foreach (Tile t in l)
+                {
+                    if (t.isHarbor)
+                    {
+                        islandCounter++;
+                        buildingMap.islandList.Add(new Island());
+                        t.islandRef = islandCounter;
+                        buildingMap.islandList.Last().associatedTiles.Add(t);
+
+                        buildingMap.islandList.Last().IslandBuilder(ref buildingMap);
+                    }
+                }
+            }
+
+
+        }
+
+        private void clearBrushButton_Click(object sender, EventArgs e)
+        {
+            brush = "";
+
         }
     }
 }

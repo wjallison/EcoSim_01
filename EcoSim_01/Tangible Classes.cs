@@ -11,7 +11,7 @@ namespace EcoSim_01
     public class Map
     {
         public List<List<Tile>> tileSet = new List<List<Tile>>();
-        List<Island> islandList = new List<Island>();
+        public List<Island> islandList = new List<Island>();
 
         public string baseMapLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/MapBackground.jpg";
         public System.Drawing.Image fullMapImage;// = Image.FromFile(baseMapLocation);
@@ -109,20 +109,77 @@ namespace EcoSim_01
 
 
 
-    class Island
+    public class Island
     {
-        List<Tile> associatedTiles = new List<Tile>();
-        List<Building> buildingList = new List<Building>();
+        public List<Tile> associatedTiles = new List<Tile>();
+        public List<Building> buildingList = new List<Building>();
 
-        bool forSale;
-        bool active;
-        bool playerOwned;
+        public bool forSale;
+        public bool active;
+        public bool playerOwned;
 
-        int money;
+        public int money;
         IDictionary<Commodity, int> commoditiesHeld;
         IDictionary<Commodity, int> commodityBuyPrice;
         IDictionary<Commodity, int> commoditySellPrice;
 
+        public Island() { }
+        public Island(HarborTile h)
+        {
+            associatedTiles.Add(h);
+        }
+
+        public void IslandBuilder(ref Map m)
+        {
+            //Note: must already have a harbor in associatedTiles!!!!!!!!!!!!!!!
+
+            bool notDone = true;
+            int islRf = associatedTiles[0].islandRef;
+
+            while (notDone)
+            {
+                for (int i = 0; i < associatedTiles.Count(); i++)
+                {
+                    notDone = false;
+                    for (int d = 0; d < 4; d++)
+                    {
+                        if(m.tileSet[associatedTiles[i].coord.iterVect(d).x][associatedTiles[i].coord.iterVect(d).y].passable == -1)
+                        {
+                            bool inListAlready = false;
+
+                            //for (int checkIndex = 0; checkIndex < activeList.Count(); checkIndex++)
+                            //{
+                            //    if (activeList[checkIndex].coord.BoolEqualCheck(activeList[activeIndex].coord.iterVect(i)))
+                            //    {
+                            //        inListAlready = true;
+                            //    }
+                            //}
+
+                            for(int checkIndex = 0; checkIndex < associatedTiles.Count(); checkIndex++)
+                            {
+                                if (associatedTiles[checkIndex].coord.BoolEqualCheck(associatedTiles[i].coord.iterVect(d)))
+                                {
+                                    inListAlready = true;
+                                }
+                            }
+
+                            if (!inListAlready)
+                            {
+                                associatedTiles.Add(m.tileSet[associatedTiles[i].coord.iterVect(d).x][associatedTiles[i].coord.iterVect(d).y]);
+                                associatedTiles.Last().islandRef = islRf;
+                                m.tileSet[associatedTiles[i].coord.iterVect(d).x][associatedTiles[i].coord.iterVect(d).y].islandRef = islRf;
+                                notDone = true;
+                            }
+
+                        }
+                    }
+                }
+
+            }
+
+
+
+        }
 
     }
 
@@ -138,6 +195,7 @@ namespace EcoSim_01
         public int passable;
         public bool isHarbor = false;
         public List<Ship> occupants;
+        public int islandRef;
 
         //Art Asset
         public string imgLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/Tiles/";

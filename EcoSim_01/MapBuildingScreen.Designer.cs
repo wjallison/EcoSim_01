@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.clearBrushButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mapBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.palatteBox)).BeginInit();
             this.SuspendLayout();
@@ -99,6 +100,7 @@
             this.checkButton.TabIndex = 5;
             this.checkButton.Text = "Check";
             this.checkButton.UseVisualStyleBackColor = true;
+            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
             // 
             // finalizeButton
             // 
@@ -128,11 +130,23 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "XML files (*.xml)|*xml|All files(*.*)|*.*";
             // 
+            // clearBrushButton
+            // 
+            this.clearBrushButton.Location = new System.Drawing.Point(550, 537);
+            this.clearBrushButton.Name = "clearBrushButton";
+            this.clearBrushButton.Size = new System.Drawing.Size(102, 23);
+            this.clearBrushButton.TabIndex = 8;
+            this.clearBrushButton.Text = "Clear Selection";
+            this.clearBrushButton.UseVisualStyleBackColor = true;
+            this.clearBrushButton.Visible = false;
+            this.clearBrushButton.Click += new System.EventHandler(this.clearBrushButton_Click);
+            // 
             // MapBuildingScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 607);
+            this.Controls.Add(this.clearBrushButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.finalizeButton);
             this.Controls.Add(this.checkButton);
@@ -162,5 +176,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button clearBrushButton;
     }
 }
