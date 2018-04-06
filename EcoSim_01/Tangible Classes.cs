@@ -179,7 +179,7 @@ namespace EcoSim_01
             //coord.set(i, j);
             coord = new Coordinates(i, j);
 
-            passable = 10;
+            passable = -1;
 
             if (t == "barren")
             {
