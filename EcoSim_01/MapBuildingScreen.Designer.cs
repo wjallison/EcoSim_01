@@ -39,8 +39,16 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.clearBrushButton = new System.Windows.Forms.Button();
+            this.selectedIslandGroupBox = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.commodityTextBox = new System.Windows.Forms.TextBox();
+            this.commodityPriceTextBox = new System.Windows.Forms.TextBox();
+            this.addCommodityButton = new System.Windows.Forms.Button();
+            this.saveIslandChangesButton = new System.Windows.Forms.Button();
+            this.addNewCommodityList = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.mapBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.palatteBox)).BeginInit();
+            this.selectedIslandGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // mapBox
@@ -141,11 +149,78 @@
             this.clearBrushButton.Visible = false;
             this.clearBrushButton.Click += new System.EventHandler(this.clearBrushButton_Click);
             // 
+            // selectedIslandGroupBox
+            // 
+            this.selectedIslandGroupBox.Controls.Add(this.addNewCommodityList);
+            this.selectedIslandGroupBox.Controls.Add(this.saveIslandChangesButton);
+            this.selectedIslandGroupBox.Controls.Add(this.addCommodityButton);
+            this.selectedIslandGroupBox.Controls.Add(this.commodityPriceTextBox);
+            this.selectedIslandGroupBox.Controls.Add(this.commodityTextBox);
+            this.selectedIslandGroupBox.Controls.Add(this.label2);
+            this.selectedIslandGroupBox.Location = new System.Drawing.Point(670, 247);
+            this.selectedIslandGroupBox.Name = "selectedIslandGroupBox";
+            this.selectedIslandGroupBox.Size = new System.Drawing.Size(217, 259);
+            this.selectedIslandGroupBox.TabIndex = 9;
+            this.selectedIslandGroupBox.TabStop = false;
+            this.selectedIslandGroupBox.Text = "islandName";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(115, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Available Commodities:";
+            // 
+            // commodityTextBox
+            // 
+            this.commodityTextBox.Location = new System.Drawing.Point(6, 45);
+            this.commodityTextBox.Multiline = true;
+            this.commodityTextBox.Name = "commodityTextBox";
+            this.commodityTextBox.Size = new System.Drawing.Size(100, 118);
+            this.commodityTextBox.TabIndex = 2;
+            // 
+            // commodityPriceTextBox
+            // 
+            this.commodityPriceTextBox.Location = new System.Drawing.Point(112, 45);
+            this.commodityPriceTextBox.Multiline = true;
+            this.commodityPriceTextBox.Name = "commodityPriceTextBox";
+            this.commodityPriceTextBox.Size = new System.Drawing.Size(100, 118);
+            this.commodityPriceTextBox.TabIndex = 3;
+            // 
+            // addCommodityButton
+            // 
+            this.addCommodityButton.Location = new System.Drawing.Point(9, 169);
+            this.addCommodityButton.Name = "addCommodityButton";
+            this.addCommodityButton.Size = new System.Drawing.Size(75, 23);
+            this.addCommodityButton.TabIndex = 4;
+            this.addCommodityButton.Text = "Add New";
+            this.addCommodityButton.UseVisualStyleBackColor = true;
+            // 
+            // saveIslandChangesButton
+            // 
+            this.saveIslandChangesButton.Location = new System.Drawing.Point(60, 230);
+            this.saveIslandChangesButton.Name = "saveIslandChangesButton";
+            this.saveIslandChangesButton.Size = new System.Drawing.Size(89, 23);
+            this.saveIslandChangesButton.TabIndex = 5;
+            this.saveIslandChangesButton.Text = "Save Changes";
+            this.saveIslandChangesButton.UseVisualStyleBackColor = true;
+            // 
+            // addNewCommodityList
+            // 
+            this.addNewCommodityList.FormattingEnabled = true;
+            this.addNewCommodityList.Location = new System.Drawing.Point(43, 145);
+            this.addNewCommodityList.Name = "addNewCommodityList";
+            this.addNewCommodityList.Size = new System.Drawing.Size(120, 95);
+            this.addNewCommodityList.TabIndex = 10;
+            // 
             // MapBuildingScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 607);
+            this.ClientSize = new System.Drawing.Size(892, 608);
+            this.Controls.Add(this.selectedIslandGroupBox);
             this.Controls.Add(this.clearBrushButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.finalizeButton);
@@ -159,6 +234,8 @@
             this.Text = "MapBuildingScreen";
             ((System.ComponentModel.ISupportInitialize)(this.mapBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.palatteBox)).EndInit();
+            this.selectedIslandGroupBox.ResumeLayout(false);
+            this.selectedIslandGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,5 +254,12 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button clearBrushButton;
+        private System.Windows.Forms.GroupBox selectedIslandGroupBox;
+        private System.Windows.Forms.Button saveIslandChangesButton;
+        private System.Windows.Forms.Button addCommodityButton;
+        private System.Windows.Forms.TextBox commodityPriceTextBox;
+        private System.Windows.Forms.TextBox commodityTextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox addNewCommodityList;
     }
 }
