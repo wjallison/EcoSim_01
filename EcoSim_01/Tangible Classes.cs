@@ -181,6 +181,22 @@ namespace EcoSim_01
 
         }
 
+        public void AddCommodity(Commodity c, int num)
+        {
+            if (commoditiesHeld.Keys.Contains(c))
+            {
+                commoditiesHeld[c] += num;
+            }
+            commoditiesHeld.Add(c, num);
+
+            //Refresh buy and sell prices
+        }
+        //public void RemoveCommodity(Commodity c, int num)
+        //{
+
+        //}
+        
+
     }
 
 

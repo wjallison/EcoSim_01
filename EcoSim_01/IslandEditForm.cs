@@ -26,8 +26,9 @@ namespace EcoSim_01
             {
                 activeCheckBox.Checked = true;
 
+
             }
-            else { }
+            else { activeCheckBox.Checked = false; }
 
 
         }
