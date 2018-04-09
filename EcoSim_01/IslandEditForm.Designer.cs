@@ -30,16 +30,18 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.commodityListBox = new System.Windows.Forms.ListBox();
-            this.CommodityPriceListBox = new System.Windows.Forms.ListBox();
+            this.CommodityNumberListBox = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.addNewCommodityBox = new System.Windows.Forms.ComboBox();
             this.saveChangesButton = new System.Windows.Forms.Button();
+            this.activeCheckBox = new System.Windows.Forms.CheckBox();
+            this.CommodityPriceListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 13);
             this.label1.TabIndex = 0;
@@ -48,22 +50,22 @@
             // commodityListBox
             // 
             this.commodityListBox.FormattingEnabled = true;
-            this.commodityListBox.Location = new System.Drawing.Point(12, 25);
+            this.commodityListBox.Location = new System.Drawing.Point(12, 53);
             this.commodityListBox.Name = "commodityListBox";
             this.commodityListBox.Size = new System.Drawing.Size(120, 95);
             this.commodityListBox.TabIndex = 1;
             // 
-            // CommodityPriceListBox
+            // CommodityNumberListBox
             // 
-            this.CommodityPriceListBox.FormattingEnabled = true;
-            this.CommodityPriceListBox.Location = new System.Drawing.Point(152, 25);
-            this.CommodityPriceListBox.Name = "CommodityPriceListBox";
-            this.CommodityPriceListBox.Size = new System.Drawing.Size(120, 95);
-            this.CommodityPriceListBox.TabIndex = 2;
+            this.CommodityNumberListBox.FormattingEnabled = true;
+            this.CommodityNumberListBox.Location = new System.Drawing.Point(138, 53);
+            this.CommodityNumberListBox.Name = "CommodityNumberListBox";
+            this.CommodityNumberListBox.Size = new System.Drawing.Size(120, 95);
+            this.CommodityNumberListBox.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 126);
+            this.button1.Location = new System.Drawing.Point(12, 154);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -73,7 +75,7 @@
             // addNewCommodityBox
             // 
             this.addNewCommodityBox.FormattingEnabled = true;
-            this.addNewCommodityBox.Location = new System.Drawing.Point(93, 126);
+            this.addNewCommodityBox.Location = new System.Drawing.Point(93, 154);
             this.addNewCommodityBox.Name = "addNewCommodityBox";
             this.addNewCommodityBox.Size = new System.Drawing.Size(121, 21);
             this.addNewCommodityBox.TabIndex = 4;
@@ -87,15 +89,35 @@
             this.saveChangesButton.Text = "Save Changes";
             this.saveChangesButton.UseVisualStyleBackColor = true;
             // 
+            // activeCheckBox
+            // 
+            this.activeCheckBox.AutoSize = true;
+            this.activeCheckBox.Location = new System.Drawing.Point(15, 12);
+            this.activeCheckBox.Name = "activeCheckBox";
+            this.activeCheckBox.Size = new System.Drawing.Size(56, 17);
+            this.activeCheckBox.TabIndex = 6;
+            this.activeCheckBox.Text = "Active";
+            this.activeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // CommodityPriceListBox
+            // 
+            this.CommodityPriceListBox.FormattingEnabled = true;
+            this.CommodityPriceListBox.Location = new System.Drawing.Point(264, 53);
+            this.CommodityPriceListBox.Name = "CommodityPriceListBox";
+            this.CommodityPriceListBox.Size = new System.Drawing.Size(120, 95);
+            this.CommodityPriceListBox.TabIndex = 7;
+            // 
             // IslandEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(481, 262);
+            this.Controls.Add(this.CommodityPriceListBox);
+            this.Controls.Add(this.activeCheckBox);
             this.Controls.Add(this.saveChangesButton);
             this.Controls.Add(this.addNewCommodityBox);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.CommodityPriceListBox);
+            this.Controls.Add(this.CommodityNumberListBox);
             this.Controls.Add(this.commodityListBox);
             this.Controls.Add(this.label1);
             this.Name = "IslandEditForm";
@@ -109,9 +131,11 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox commodityListBox;
-        private System.Windows.Forms.ListBox CommodityPriceListBox;
+        private System.Windows.Forms.ListBox CommodityNumberListBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox addNewCommodityBox;
         private System.Windows.Forms.Button saveChangesButton;
+        private System.Windows.Forms.CheckBox activeCheckBox;
+        private System.Windows.Forms.ListBox CommodityPriceListBox;
     }
 }

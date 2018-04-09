@@ -22,6 +22,13 @@ namespace EcoSim_01
         {
             InitializeComponent();
 
+            if (i.active)
+            {
+                activeCheckBox.Checked = true;
+
+            }
+            else { }
+
 
         }
     }

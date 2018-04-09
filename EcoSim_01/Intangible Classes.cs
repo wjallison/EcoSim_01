@@ -275,10 +275,19 @@ namespace EcoSim_01
 
     public class Commodity
     {
-        string name;
-        int sizePUnit;
-        int minCost, maxCost;
-        float avgCost;
+        public string name;
+        public int sizePUnit;
+        public int minCost, maxCost;
+        public float avgCost;
+
+        public Commodity() { }
+        public Commodity(string n, int sPU, int minC, int maxC)
+        {
+            name = n;
+            sizePUnit = sPU;
+            minCost = minC;
+            maxCost = maxC;
+        }
 
     }
 

@@ -54,6 +54,49 @@ namespace EcoSim_01
             this.Name = "Form1";
             this.ResumeLayout(false);
 
+
+
+
+
+
+
+            //Initialize list of commodities
+
+            List<Commodity> buildingList = new List<Commodity>();
+
+            buildingList.Add(new Commodity("Grain", 1, 10, 30));
+            buildingList.Add(new Commodity("Meat", 1, 20, 50));
+            buildingList.Add(new Commodity("Sugar", 1, 50, 100));
+            buildingList.Add(new Commodity("Tobacco", 1, 50, 100));
+            buildingList.Add(new Commodity("Wood", 5, 20, 60));
+            buildingList.Add(new Commodity("Iron", 5, 50, 100));
+            buildingList.Add(new Commodity("Gold", 3, 100, 200));
+            buildingList.Add(new Commodity("Leather", 2, 30, 60));
+            buildingList.Add(new Commodity("Stone", 8, 20, 60));
+            buildingList.Add(new Commodity("Cotton", 1, 20, 50));
+            buildingList.Add(new Commodity("Tea", 1, 30, 80));
+            buildingList.Add(new Commodity("Saltpetre", 3, 30, 70));
+            buildingList.Add(new Commodity("Sulfur", 3, 30, 70));
+            buildingList.Add(new Commodity("Salt", 1, 10, 80));
+            buildingList.Add(new Commodity("Fish", 1, 20, 50));
+            buildingList.Add(new Commodity("Fruit", 1, 10, 50));
+            buildingList.Add(new Commodity("Coal", 2, 20, 70));
+            buildingList.Add(new Commodity("Dye", 1, 60, 120));
+            buildingList.Add(new Commodity("Bread", 2, 60, 150));
+            buildingList.Add(new Commodity("Grain Alcohol", 2, 80, 200));
+            buildingList.Add(new Commodity("Rum", 2, 100, 250));
+            buildingList.Add(new Commodity("Weapons", 3, 100, 500));
+            buildingList.Add(new Commodity("Tools", 3, 100, 500));
+            buildingList.Add(new Commodity("Cloth", 2, 100, 200));
+            buildingList.Add(new Commodity("Gunpowder", 1, 100, 250));
+            buildingList.Add(new Commodity("Salted Meat", 2, 100, 250));
+            buildingList.Add(new Commodity("Dried Fruit", 1, 50, 150));
+            buildingList.Add(new Commodity("Rations", 2, 100, 500));
+            buildingList.Add(new Commodity("Clothes", 2, 150, 500));
+
+            GlobalClass1.allCommods = buildingList;
+
+
         }
 
         private void MapBuildingButton_Click(object sender, EventArgs e)

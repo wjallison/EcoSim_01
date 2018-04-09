@@ -11,5 +11,7 @@ namespace EcoSim_01
         public static int graphicTileSize = 25;
         public static int mapDim = 511 / (GlobalClass1.graphicTileSize + 1);
         //public static int graphicTileSizePlus = 51;
+
+        public static List<Commodity> allCommods = new List<Commodity>();
     }
 }
