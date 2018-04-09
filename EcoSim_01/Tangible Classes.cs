@@ -195,7 +195,7 @@ namespace EcoSim_01
         public int passable;
         public bool isHarbor = false;
         public List<Ship> occupants;
-        public int islandRef;
+        public int islandRef = -1;
 
         //Art Asset
         public string imgLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/Tiles/";
