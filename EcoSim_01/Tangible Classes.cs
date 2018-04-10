@@ -14,11 +14,14 @@ namespace EcoSim_01
         public List<Island> islandList = new List<Island>();
 
         public string baseMapLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/MapBackground.jpg";
-        public System.Drawing.Image fullMapImage;// = Image.FromFile(baseMapLocation);
+        internal System.Drawing.Image fullMapImage;// = Image.FromFile(baseMapLocation);
         System.Drawing.Graphics gra;
 
         public string debugging;
 
+        public Image GetMapImage() { return fullMapImage; }
+
+        public void SetMapImage(Image i) { fullMapImage = i; }
 
         bool Includes(Coordinates c)
         {
