@@ -14,14 +14,15 @@ namespace EcoSim_01
         public List<Island> islandList = new List<Island>();
 
         public string baseMapLocation = System.IO.Directory.GetCurrentDirectory() + "/ArtAssets/MapBackground.jpg";
+        internal System.Drawing.Image baseMapImage;
         internal System.Drawing.Image fullMapImage;// = Image.FromFile(baseMapLocation);
         System.Drawing.Graphics gra;
 
         public string debugging;
 
-        public Image GetMapImage() { return fullMapImage; }
+        //public Image GetMapImage() { return fullMapImage; }
 
-        public void SetMapImage(Image i) { fullMapImage = i; }
+        //public void SetMapImage(Image i) { fullMapImage = i; }
 
         bool Includes(Coordinates c)
         {
@@ -35,6 +36,7 @@ namespace EcoSim_01
         public void InitializeMapImage()
         {
             fullMapImage = Image.FromFile(baseMapLocation);
+            baseMapImage = Image.FromFile(baseMapLocation);
             gra = Graphics.FromImage(fullMapImage);
 
             for (int i = 0; i < tileSet.Count(); i++)
@@ -64,18 +66,34 @@ namespace EcoSim_01
 
         public void DrawTile(Tile t)
         {
-            //Bitmap bit = new Bitmap(t.localCanvas);
-            //gra.DrawImage(bit, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY),new Size(GlobalClass1.graphicTileSize,GlobalClass1.graphicTileSize)));
-
-
+            //Draw the tile
             Image bit = Image.FromFile(t.imgLocation);
-
-            //gra.DrawImage(t.localCanvas, new Rectangle(new Point(t.coord.graphicsX, t.coord.graphicsY), new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
 
             gra.DrawImage(bit, 
                 new Rectangle(
                     new Point(t.coord.graphicsX, t.coord.graphicsY), 
                     new Size(GlobalClass1.graphicTileSize, GlobalClass1.graphicTileSize)));
+
+            //Draw the numbers on the seatiles
+            if (t.passable > 0)
+            {
+                //First, passability in upper left
+                gra.DrawString(
+                    t.passable.ToString(),
+                    new Font("Arial", 2),
+                    new SolidBrush(Color.Black),
+                    new Point(t.coord.graphicsX, t.coord.graphicsY)
+                    );
+
+                //Second, the number of ships in the lower right
+                gra.DrawString(
+                    t.occupants.Count().ToString(),
+                    new Font("Arial", 2),
+                    new SolidBrush(Color.Black),
+                    new Point(t.coord.graphicsX + GlobalClass1.graphicTileSize / 2, t.coord.graphicsY + GlobalClass1.graphicTileSize / 2)
+                    );
+            }
+            
         }
 
         public void Highlight(PathfindingTile p, string color)
