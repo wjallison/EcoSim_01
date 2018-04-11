@@ -86,7 +86,7 @@ namespace EcoSim_01
                     );
 
                 //Second, the number of ships in the lower right
-                if (t.occupants.Count() > 0)
+                if (t.occupants.Any())
                 {
                     gra.DrawString(
                     t.occupants.Count().ToString(),
@@ -235,7 +235,7 @@ namespace EcoSim_01
         //passable: pathfinding cost for passing through tile.  1 minimum, 9 maximum, 10 impassable
         public int passable;
         public bool isHarbor = false;
-        public List<Ship> occupants;
+        public List<Ship> occupants = new List<Ship>();
         public int islandRef = -1;
 
         //Art Asset
