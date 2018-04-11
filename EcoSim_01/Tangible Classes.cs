@@ -86,12 +86,16 @@ namespace EcoSim_01
                     );
 
                 //Second, the number of ships in the lower right
-                gra.DrawString(
+                if (t.occupants.Count() > 0)
+                {
+                    gra.DrawString(
                     t.occupants.Count().ToString(),
                     new Font("Arial", 2),
                     new SolidBrush(Color.Black),
                     new Point(t.coord.graphicsX + GlobalClass1.graphicTileSize / 2, t.coord.graphicsY + GlobalClass1.graphicTileSize / 2)
                     );
+                }
+                
             }
             
         }
