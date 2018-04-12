@@ -154,6 +154,16 @@ namespace EcoSim_01
             associatedTiles.Add(h);
         }
 
+        public int GetBuyPrice(Commodity c)
+        {
+            return commodityBuyPrice[c];
+        }
+
+        public int GetSellPrice(Commodity c)
+        {
+            return commoditySellPrice[c];
+        }
+
         public void IslandBuilder(ref Map m)
         {
             //Note: must already have a harbor in associatedTiles!!!!!!!!!!!!!!!

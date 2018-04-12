@@ -164,10 +164,10 @@ namespace EcoSim_01
             return new PathfindingTile();
         }
 
-        public void PathFind(List<Tile> destList, Map map)
+        public void PathFind(List<Tile> destList, Map map, Coordinates startPt)
         {
             //List<List<PathfindingTile>> activeList = new List<List<PathfindingTile>>();
-            PathfindingTile startTile = new PathfindingTile(map.tileSet[coord.x][coord.y]);
+            PathfindingTile startTile = new PathfindingTile(map.tileSet[startPt.x][startPt.y]);
             List<PathfindingTile> activeList = new List<PathfindingTile>();
             List<List<PathfindingTile>> fullList = new List<List<PathfindingTile>>();
             //List<Tile> destinations = destList;
@@ -270,6 +270,16 @@ namespace EcoSim_01
             }
 
 
+        }
+
+        public int TradeRoute(Map map, Island destA, Island destB, Commodity c)
+        {
+            int numerator = holdSize / c.sizePUnit * (destB.GetBuyPrice(c) - destA.GetSellPrice(c));
+            //denominator is time from current position to A plus time from A to B
+            int denominator;
+            //denominator = PathFind()
+
+            return numerator / denominator;
         }
     }
 

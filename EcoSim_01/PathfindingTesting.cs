@@ -97,7 +97,7 @@ namespace EcoSim_01
                 mapBox.Image = testingMap.fullMapImage;
 
                 //Run the pathfinder
-                testingMap.tileSet[i][j].occupants.Last().PathFind(destinations, testingMap);
+                testingMap.tileSet[i][j].occupants.Last().PathFind(destinations, testingMap,new Coordinates(i,j));
                 //string s;
                 reportBox.Text = testingMap.tileSet[i][j].occupants.Last().PrintPorts();
 
