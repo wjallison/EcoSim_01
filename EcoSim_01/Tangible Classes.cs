@@ -169,7 +169,8 @@ namespace EcoSim_01
             //Note: must already have a harbor in associatedTiles!!!!!!!!!!!!!!!
 
             bool notDone = true;
-            int islRf = associatedTiles[0].islandRef;
+            int islRf = associatedTiles[0].islandRef; //islandRef is used to designate which island a given tile is associated with
+            //islRf is to be assigned to all the tiles found by IslandBuilder
 
             while (notDone)
             {
@@ -242,7 +243,7 @@ namespace EcoSim_01
     {
         public int x, y;
         public Coordinates coord;
-        //passable: pathfinding cost for passing through tile.  1 minimum, 9 maximum, 10 impassable
+        //passable: pathfinding cost for passing through tile.  1 minimum, 9 maximum, -1 impassable
         public int passable;
         public bool isHarbor = false;
         public List<Ship> occupants = new List<Ship>();
@@ -329,7 +330,6 @@ namespace EcoSim_01
 
             }
 
-            //localCanvas = (Bitmap)Image.FromFile(imgLocation);
         }
     }
 
@@ -350,7 +350,6 @@ namespace EcoSim_01
 
             imgLocation += "Harbor.jpg";
 
-            //localCanvas = (Bitmap)Image.FromFile(imgLocation);
         }
 
 

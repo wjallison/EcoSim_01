@@ -13,5 +13,7 @@ namespace EcoSim_01
         //public static int graphicTileSizePlus = 51;
 
         public static List<Commodity> allCommods = new List<Commodity>();
+
+        //public static 
     }
 }
