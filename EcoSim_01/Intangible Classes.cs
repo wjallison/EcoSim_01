@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace EcoSim_01
 {
+    public class MapImage
+    {
+
+    }
+
     public class Coordinates
     {
         public int x, y;

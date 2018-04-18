@@ -62,6 +62,12 @@
     <Compile Include="MapBuildingScreen.Designer.cs">
       <DependentUpon>MapBuildingScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="MovementTesting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovementTesting.Designer.cs">
+      <DependentUpon>MovementTesting.cs</DependentUpon>
+    </Compile>
     <Compile Include="PathfindingTesting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MapBuildingScreen.resx">
       <DependentUpon>MapBuildingScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovementTesting.resx">
+      <DependentUpon>MovementTesting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PathfindingTesting.resx">
       <DependentUpon>PathfindingTesting.cs</DependentUpon>
