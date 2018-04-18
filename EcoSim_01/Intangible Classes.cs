@@ -274,6 +274,8 @@ namespace EcoSim_01
 
         public int TradeRoute(Map map, Island destA, Island destB, Commodity c)
         {
+            //NOTE: PathFind must have been run for all ports PRIOR to executing TradeRoute
+
             Ship hypotheticalShip = new Ship();
             //destX.associatedTiles[0] will always be the harbor tile
             hypotheticalShip.coord = new Coordinates(destA.associatedTiles[0].coord.x, destA.associatedTiles[0].coord.y);
@@ -281,13 +283,20 @@ namespace EcoSim_01
             tempDestList.Add(destB.associatedTiles[0]);
             hypotheticalShip.PathFind(tempDestList, map, hypotheticalShip.coord);
             //hypotheticalShip.courses[0].Count() is now the distance from A to B
+            int abPath = hypotheticalShip.courses[0].Count();
 
             int numerator = holdSize / c.sizePUnit * (destB.GetBuyPrice(c) - destA.GetSellPrice(c));
 
-
+            hypotheticalShip.coord = coord;
+            tempDestList = new List<Tile>();
+            tempDestList.Add(destA.associatedTiles[0]);
+            hypotheticalShip.PathFind(tempDestList, map, hypotheticalShip.coord);
+            int shipaPath = hypotheticalShip.courses[0].Count();
 
             //denominator is time from current position to A plus time from A to B
-            int denominator;
+            int denominator = abPath + shipaPath;
+
+
             //denominator = PathFind()
 
             return numerator / denominator;
